@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Zi-You Wang</title>
+    <link rel="stylesheet" href="./style2.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<body>
+    <!-- Menu-->
+    <div class="menu_container">
+        <div class="content">
+            <div class="circle">
+                <h4>&nbsp;菜單&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>Menu</h4>
+                <a href="#port" class="sub-item port"><h5 style="transform:rotate(-90deg);">&nbsp;&nbsp;&nbsp;作品<br>Portfolio</h5></a>
+                <a href="#about" class="sub-item about"><h5>&nbsp;&nbsp;關於<br>About</h5></a>
+                <a href="#contact" class="sub-item contact" ><h5 style="transform:rotate(90deg);">&nbsp;&nbsp;&nbsp;聯絡<br>Contact</h5></a>
+            </div>
+        </div>
+    </div>
+    <!-- section1 -->
+    <div class="sec1-title"></div>
+    <img src="./image/bg/img_sec1.png" style="width:300px;height:1500px;margin:-750px 0 0 400px;">
+    <img id="paintImage" src="./image/bg/paint.png" style="width:500px;height:400px;margin:0px 0 -140px 0px;">
+    <div class="sec1-ground">
+        <!-- section2 -->
+        <div class="bg1" id="port">
+            <h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>作品集<br>Portfolio</h2>
+            <div class="sec2">
+                <button class="Pbutton">平面設計</button>
+                <button class="Pbutton">網頁設計</button>
+                <button class="Pbutton">3D模型</button>
+                <button class="Pbutton">After Effect</button>
+                <button class="Pbutton">Premiere Pro</button>
+            </div> 
+
+            <div class="slideshow">
+                <div class="slide-item">
+                    <div class="slide-content">
+                        <img src="./image/3D_1.jpg">
+                    </div>
+                </div>
+                <div class="slide-item">
+                    <div class="slide-content">
+                        <img src="./image/3D_2.jpg">
+                    </div>
+                </div>
+                <!-- 添加更多幻灯片项 -->
+            </div>
+            <a id="prev" class="slide-arrow slide-arrow--prev"><</a>
+            <a id="next" class="slide-arrow slide-arrow--next">></a>
+        </div>
+    </div>
+    <!-- section3 -->
+    <div class="sec3" id="about">    
+        <div class="box1"> 
+            <div class="dashed-box"><div class="sec3-img"></div></div>
+        </div>
+        <div class="box2"></div>
+        <div class="box3" id="ground">
+            <div class="dashed-box"></div>
+        </div>
+    </div>
+    <!-- footer -->
+    <a href="https://www.instagram.com/wzy.___?igsh=YmZtaTNvdTdtNXFy"><h3><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;&nbsp;了解更多<br>Learn more</h3></a>
+    <div class="footer" id="contact">
+        <a href="https://www.instagram.com/wzy.___?igsh=YmZtaTNvdTdtNXFy" class="IGbutton" target="_blank">
+            <img src="./image/bg/ig.png" alt="Instagram">
+        </a>
+        <img src="./image/bg/img_footer.png" style="width:700px;height:600px;margin:100px 0px 0 900px ;">
+    </div>
+    <button id="back-to-top" onclick="scrollToTop()">Top</button>
+    <script>
+        // 回頂部
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        }
+        //背景切換
+        window.addEventListener('scroll', function() {
+            var bg1 = document.querySelector('.bg1');
+            var paintImage = document.getElementById('paintImage');
+            var portPosition = document.getElementById('port').getBoundingClientRect().top;
+            var groundPosition = document.getElementById('ground').getBoundingClientRect().top;
+
+            // 如果滚动位置超过 #port 的位置，显示 bg1，切换图片为 paint.png
+            if (window.scrollY > portPosition && window.scrollY < groundPosition) {
+                bg1.style.opacity = 0;
+                paintImage.src = './image/bg/bucket.png';
+            } else {
+                bg1.style.opacity = 1;
+                paintImage.src = './image/bg/paint.png';
+            }
+        });
+
+        //slideshow
+       function showSlide() {
+    let slides = document.getElementsByClassName("slide-item");
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+    }
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex].style.display = "block";
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+        plusSlides(1);
+    }, 2000); // Change slide every 2 seconds
+}
+
+    </script>
+</body>
+</html>
